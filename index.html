@@ -160,50 +160,69 @@
            MOBILE & IPHONE RESPONSIVE STYLES
            ========================================= */
         @media (max-width: 768px) {
+            /* Compress header space to leave room for chat */
             header {
-                flex-wrap: wrap; justify-content: center; gap: 10px; text-align: center; padding: 10px;
+                flex-wrap: wrap; justify-content: center; gap: 5px; padding: 5px 10px; font-size: 0.9em; text-align: center;
             }
 
             #cad-container { flex-direction: column; }
 
-            /* Allow queue to shrink and collapse when keyboard opens */
+            /* Compress the queue significantly so it doesn't take over the screen */
             #queue-panel {
                 width: 100%;
-                flex: 0 1 30%; 
-                min-height: 80px; 
+                flex: 0 1 20%; 
+                min-height: 65px; 
                 border-right: none;
                 border-bottom: 2px solid var(--border);
             }
 
+            .panel-title { padding: 5px 8px; font-size: 0.8em; }
+
             #right-workspace { width: 100%; flex: 1 1 auto; }
 
-            /* Allow details grid to compress vertically to protect chat visibility */
+            /* Compress details grid vertically to protect chat visibility */
             .details-grid {
                 grid-template-columns: 1fr;
-                gap: 8px;
+                gap: 5px;
                 padding: 10px;
                 flex-shrink: 1;
                 overflow-y: auto; 
-                max-height: 35vh;
+                max-height: 110px; /* Crucial: Locks this area so it doesn't crush the chat */
             }
             .data-field[style*="grid-column: span 2;"] { grid-column: span 1 !important; }
-            .data-field span { font-size: 0.95em; }
+            .data-field label { font-size: 0.7em; }
+            .data-field span { font-size: 0.9em; padding-top: 2px; }
             
             /* CRITICAL IPHONE FIX: Inputs must be at least 16px to prevent iOS auto-zoom bug */
             input, select, textarea {
                 font-size: 16px !important; 
             }
 
-            /* Protect the input from the iOS bottom home bar */
+            /* --- CHAT AREA ENHANCEMENTS FOR IPHONE --- */
             #chat-section {
                 padding: 10px;
                 padding-bottom: max(10px, env(safe-area-inset-bottom)); 
             }
             
+            /* Make messages noticeably larger and easier to read */
+            .chat-msg { 
+                font-size: 1.15rem; /* Larger text */
+                margin-bottom: 12px;
+                line-height: 1.5; 
+            }
+            .chat-time { font-size: 0.85rem; }
+            .chat-sender { font-size: 1.05rem; }
+
+            /* Make the input box taller and easier to tap */
+            #chat-input { 
+                padding: 15px 12px; 
+                font-size: 16px !important; 
+                height: 50px; 
+            }
+            
             #new-case-panel { padding: 15px; }
             .modal-actions { flex-direction: column; gap: 10px; }
             .modal-actions .btn { width: 100%; }
-            #chat-input { padding: 10px; }
             .clear-btn { font-size: 0.7em; padding: 6px 10px; }
         }
     </style>
